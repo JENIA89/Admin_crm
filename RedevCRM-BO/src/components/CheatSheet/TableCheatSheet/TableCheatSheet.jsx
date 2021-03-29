@@ -70,7 +70,7 @@ const TableCheatSheet = () => {
       >
         <SendFormForCreateCheatSheetSections showModal={showModal} />
       </Modal>
-      <Table columns={columns} dataSource={sections} />
+      <Table columns={columns} dataSource={sections} rowKey='id' />
     </div>
   );
 };

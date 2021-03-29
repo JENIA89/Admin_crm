@@ -65,7 +65,7 @@ const CheatSheetThemes = () => {
         />
       </Modal>
 
-      <Table columns={columns} dataSource={themes} />
+      <Table columns={columns} dataSource={themes} rowKey='id' />
     </>
   );
 };

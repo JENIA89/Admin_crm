@@ -37,7 +37,7 @@ const Leeds = () => {
       {leeds.length === 0 ? (
         <Spinner />
       ) : (
-        <Table columns={columns} dataSource={leeds} />
+        <Table columns={columns} dataSource={leeds} rowKey='id' />
       )}
     </div>
   );

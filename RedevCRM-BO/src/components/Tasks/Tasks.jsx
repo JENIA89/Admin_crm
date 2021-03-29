@@ -52,7 +52,7 @@ const Tasks = () => {
       {tasks.length === 0 ? (
         <Spinner />
       ) : (
-        <Table columns={columns} dataSource={tasks} />
+        <Table columns={columns} dataSource={tasks} rowKey='id' />
       )}
     </div>
   );

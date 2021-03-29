@@ -1,10 +1,10 @@
-import "./Quotes.css";
-import SendFormQuote from "./SendFormQuote/SendFormQuote";
-import React, { useContext, useState, useEffect, useRef } from "react";
-import { Table, Input, Button, Popconfirm, Form, message, Modal } from "antd";
-import axios from "axios";
-import { connect } from "react-redux";
-import { getAsyncQuotes } from "../../redux/actions/quotesActions";
+import './Quotes.css';
+import SendFormQuote from './SendFormQuote/SendFormQuote';
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import { Table, Input, Button, Popconfirm, Form, message, Modal } from 'antd';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { getAsyncQuotes } from '../../redux/actions/quotesActions';
 
 const EditableContext = React.createContext();
 
@@ -50,7 +50,7 @@ const EditableCell = ({
       toggleEdit();
       handleSave({ ...record, ...values });
     } catch (errInfo) {
-      console.log("Save failed:", errInfo);
+      console.log('Save failed:', errInfo);
     }
   };
 
@@ -74,7 +74,7 @@ const EditableCell = ({
       </Form.Item>
     ) : (
       <div
-        className="editable-cell-value-wrap"
+        className='editable-cell-value-wrap'
         style={{
           paddingRight: 24,
         }}
@@ -93,26 +93,26 @@ class Quotes extends React.Component {
     super(props);
     this.columns = [
       {
-        title: "Author",
-        dataIndex: "author",
-        key: "author",
+        title: 'Author',
+        dataIndex: 'author',
+        key: 'author',
       },
       {
-        title: "Quote",
-        dataIndex: "text",
-        key: "text",
-        maxWidth: "60%",
+        title: 'Quote',
+        dataIndex: 'text',
+        key: 'text',
+        maxWidth: '60%',
         editable: true,
       },
       {
-        title: "Actions",
-        dataIndex: "_id",
+        title: 'Actions',
+        dataIndex: '_id',
         render: (_id) => (
           <Popconfirm
-            title="Are you shure?"
+            title='Are you shure?'
             onConfirm={() => this.handleDelete(_id)}
           >
-            <p style={{ cursor: "pointer" }}>Delete</p>
+            <p style={{ cursor: 'pointer' }}>Delete</p>
           </Popconfirm>
         ),
       },
@@ -135,9 +135,9 @@ class Quotes extends React.Component {
       .delete(`https://redevcrm.herokuapp.com/quotes/${_id}`)
       .then(() => {
         this.props.getAsyncQuotes();
-        message.success("Цитата удалена успешно");
+        message.success('Цитата удалена успешно');
       })
-      .catch(() => message.error("Что то пошло не так!"));
+      .catch(() => message.error('Что то пошло не так!'));
 
   handleSave = (data) => {
     const text = { text: data.text };
@@ -145,9 +145,9 @@ class Quotes extends React.Component {
       .patch(`https://redevcrm.herokuapp.com/quotes/${data._id}`, text)
       .then(() => {
         this.props.getAsyncQuotes();
-        message.success("Цитата изменена успешно");
+        message.success('Цитата изменена успешно');
       })
-      .catch(() => message.error("Что то пошло не так!"));
+      .catch(() => message.error('Что то пошло не так!'));
   };
 
   componentDidMount() {
@@ -182,15 +182,15 @@ class Quotes extends React.Component {
     return (
       <div>
         <Button
-          type="primary"
-          htmlType="submit"
+          type='primary'
+          htmlType='submit'
           onClick={this.showModal}
-          style={{ marginBottom: "15px", borderRadius: "7px" }}
+          style={{ marginBottom: '15px', borderRadius: '7px' }}
         >
           Create quote
         </Button>
         <Modal
-          title="Basic Modal"
+          title='Basic Modal'
           visible={visible}
           onCancel={this.showModal}
           footer={null}
@@ -199,10 +199,11 @@ class Quotes extends React.Component {
         </Modal>
         <Table
           components={components}
-          rowClassName={() => "editable-row"}
+          rowClassName={() => 'editable-row'}
           bordered
           dataSource={data}
           columns={columns}
+          rowKey='id'
         />
       </div>
     );

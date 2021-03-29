@@ -43,7 +43,7 @@ const Users = () => {
       {users.length === 0 ? (
         <Spinner />
       ) : (
-        <Table columns={columns} dataSource={users} />
+        <Table columns={columns} dataSource={users} rowKey='id' />
       )}
     </div>
   );
